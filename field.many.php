@@ -164,19 +164,21 @@ class Field_many
 	{
 		$row = unserialize($row);
 
-		$field_type = $custom['many_field_type'];
-		$class = "Field_{$field_type}";
+		if ( ! empty($row)) {
+			$field_type = $custom['many_field_type'];
+			$class = "Field_{$field_type}";
 
-		$field = new $class;
-		$field->CI =& get_instance();
+			$field = new $class;
+			$field->CI =& get_instance();
 
-		foreach ($row as &$value) {
-			if (method_exists($field, 'pre_output_plugin')) {
-				$value['value'] = $field->pre_output_plugin($value, null);
+			foreach ($row as &$value) {
+				if (method_exists($field, 'pre_output_plugin')) {
+					$value['value'] = $field->pre_output_plugin($value, null);
+				}
 			}
-		}
 
-		return $row;
+			return $row;
+		}
 	}
 
 }
