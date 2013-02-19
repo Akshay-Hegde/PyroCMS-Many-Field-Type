@@ -155,9 +155,10 @@ class Field_many
 		return serialize(array_values($input));
 	}
 
+	// I'm anticipating doing more with this method
 	public function pre_output($input, $data)
 	{
-		print_r($input);
+		return $input;
 	}
 
 	public function pre_output_plugin($row, $custom)
