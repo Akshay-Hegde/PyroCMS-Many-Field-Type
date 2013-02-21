@@ -172,7 +172,12 @@ class Field_many
 			$field = new $class;
 			$field->CI =& get_instance();
 
-			foreach ($row as &$value) {
+			foreach ($row as $key => &$value) {
+				if (empty($value['value']) and empty($value['key'])) {
+					unset($row[$key]);
+					continue;
+				}
+
 				if (method_exists($field, 'pre_output_plugin')) {
 					$value['value'] = $field->pre_output_plugin($value, null);
 				}
@@ -181,5 +186,4 @@ class Field_many
 			return $row;
 		}
 	}
-
 }
