@@ -4,7 +4,7 @@ class Field_many
 {
 	public $field_type_slug			= 'many';
 	
-	public $db_col_type				= 'longtext';
+	public $db_col_type				= 'blob';
 
 	public $custom_parameters		= array('many_field_type', 'include_key', 'key_legend', 'value_legend');
 
